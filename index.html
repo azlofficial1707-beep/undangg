@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17231e">
+<title>The Wedding | Undangan Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#24372d;--forest2:#17231e;--gold:#c6a875;--cream:#f7f3eb;--ink:#344238;--muted:#7d877e}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.shell{max-width:520px;margin:auto;background:#fffdf8;min-height:100vh;box-shadow:0 0 50px #1b2b2012;overflow:hidden}
+.cover{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:35px 24px;background:linear-gradient(180deg,#101b16a6,#101b168c),url('assets/foto-cover.jpg') center/cover no-repeat}
+.cover:before{content:"";position:absolute;inset:15px;border:1px solid #d4bd8a99;pointer-events:none}
+.cover-inner{position:relative;z-index:1;max-width:390px}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.cover h1{font:500 clamp(42px,11vw,60px)/1.12 "Playfair Display",serif;margin:24px 0}
+.cover .amp{font-style:italic;color:#e5cfaa}
+.cover-date{font-size:12px;letter-spacing:3px;margin-top:22px}
+.to-label{margin-top:54px;font-size:12px;color:#eee5d5}
+.guest{font:italic 22px "Playfair Display",serif;margin-top:8px}
+.btn{border:1px solid var(--gold);background:var(--gold);color:#1d2b23;padding:13px 24px;border-radius:2px;letter-spacing:1px;font-size:11px;text-transform:uppercase;transition:.25s}
+.btn:hover{background:#dfc99f;transform:translateY(-2px)}
+.cover .btn{margin-top:24px;background:transparent;color:white}
+.cover .btn:hover{background:var(--gold);color:var(--forest2)}
+.content{display:none;animation:fade .9s ease}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+section{padding:66px 27px;text-align:center;position:relative}
+section.dark{background:var(--forest);color:#f8f4eb}
+section.dark h2,section.dark .script{color:#e0c99b}
+.kicker{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#a88b5d}
+h2{font:500 34px/1.2 "Playfair Display",serif;color:var(--forest);margin:14px 0}
+.script{font:italic 25px "Playfair Display",serif;color:#a88b5d}
+p{font-size:13px;line-height:1.9;color:var(--muted)}
+.dark p{color:#d7ded7}
+.ornament{display:flex;align-items:center;justify-content:center;gap:12px;margin:20px auto;color:var(--gold);font-size:17px}
+.ornament:before,.ornament:after{content:"";width:48px;height:1px;background:#c9b58f}
+.hero-img{width:100%;height:390px;object-fit:cover;border-radius:180px 180px 4px 4px;margin:26px 0 20px}
+.couple-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.person img{width:100%;height:225px;object-fit:cover;border-radius:100px 100px 3px 3px}
+.person h3{font:500 23px "Playfair Display",serif;color:var(--forest);margin:14px 0 7px}
+.person .parents{font-size:11px}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:27px 0 0}
+.time{border:1px solid #b8a27d55;padding:14px 4px}
+.time strong{display:block;font:500 27px "Playfair Display",serif;color:#e2c995}
+.time span{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#d5ddd5}
+.event{border:1px solid #d9cfbc;padding:25px 17px;margin-top:16px;background:#fffdf8}
+.event h3{font:500 24px "Playfair Display",serif;color:var(--forest);margin:9px 0}
+.event .time-label{color:#a88b5d;font-size:11px;letter-spacing:1px}
+.map-btn{display:inline-block;margin-top:17px;text-decoration:none}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:24px}
+.gallery img{width:100%;height:180px;object-fit:cover}
+.gallery img:first-child{grid-column:span 2;height:240px}
+.quote{font:italic 19px/1.7 "Playfair Display",serif;color:#e4d4b5;margin:22px 0}
+.rsvp-form{margin-top:25px;text-align:left}
+.rsvp-form label{display:block;font-size:11px;margin:12px 0 6px;color:#e6e1d7}
+.rsvp-form input,.rsvp-form select,.rsvp-form textarea{width:100%;padding:12px;border:1px solid #66786c;background:#ffffff0c;color:#fff;border-radius:2px;outline:none}
+.rsvp-form select option{color:#17231e}
+.rsvp-form button{width:100%;margin-top:17px}
+footer{background:#17231e;color:#d8c49d;text-align:center;padding:32px 20px}
+footer p{color:#c6cfc7;font-size:11px}
+.float-music{position:fixed;right:max(16px,calc((100vw - 520px)/2 + 15px));bottom:18px;width:45px;height:45px;border-radius:50%;border:1px solid var(--gold);background:var(--forest);color:#f6e8c9;display:none;z-index:5;box-shadow:0 5px 20px #0002}
+.float-music.playing{animation:spin 5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#editor{max-width:520px;margin:18px auto;background:#fff;padding:22px;border:1px solid #e5dfd2}
+#editor h3{font:500 24px "Playfair Display",serif;color:var(--forest);margin-bottom:7px}
+#editor p{margin-bottom:17px}
+#editor label{display:block;font-size:11px;font-weight:600;margin:12px 0 5px;color:#45554a}
+#editor input{width:100%;padding:11px;border:1px solid #d8d2c7;border-radius:3px;background:#fff}
+#editor .btn{margin-top:17px;width:100%}
+#editor .hint{font-size:11px;background:#f5f1e8;padding:12px;margin-top:14px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#17231e;color:white;padding:12px 18px;font-size:12px;opacity:0;pointer-events:none;transition:.3s;z-index:10}
+.toast.show{opacity:1}
+@media(max-width:370px){section{padding:55px 19px}.person img{height:190px}.time strong{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="cover" id="cover">
+    <div class="cover-inner">
+      <div class="eyebrow">The Wedding Celebration</div>
+      <h1><span id="coverGroom">Ari</span><br><span class="amp">&amp;</span><br><span id="coverBride">Nadia</span></h1>
+      <div class="cover-date" id="coverDate">20 DESEMBER 2026</div>
+      <div class="to-label">Kepada Yth. Bapak/Ibu/Saudara/i</div>
+      <div class="guest" id="guestName">Tamu Undangan</div>
+      <button class="btn" onclick="openInvitation()">✦ &nbsp; Buka Undangan</button>
+    </div>
+  </div>
+
+  <main class="content" id="content">
+    <section>
+      <div class="kicker">Assalamu'alaikum Warahmatullahi Wabarakatuh</div>
+      <div class="ornament">✧</div>
+      <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami.</p>
+      <img class="hero-img" id="photoCover" src="assets/foto-cover.jpg" alt="Foto kedua mempelai">
+      <div class="script" id="mainNames">Ari &amp; Nadia</div>
+      <p id="mainDate">Minggu, 20 Desember 2026</p>
+    </section>
+
+    <section class="dark">
+      <div class="kicker">Two souls, one heart</div>
+      <h2>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h2>
+      <p>Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu merasa tenteram di sampingnya.</p>
+      <div class="quote">“The best thing to hold onto in life is each other.”</div>
+      <div class="kicker">— Audrey Hepburn</div>
+    </section>
+
+    <section>
+      <div class="kicker">The Bride &amp; Groom</div>
+      <h2>Mempelai</h2>
+      <div class="ornament">❧</div>
+      <div class="couple-grid">
+        <div class="person">
+          <img id="photoMan" src="assets/pria.jpg" alt="Mempelai pria">
+          <h3 id="groomName">Ari</h3>
+          <p id="groomParents" class="parents">Putra dari Bapak ... &amp; Ibu ...</p>
+        </div>
+        <div class="person">
+          <img id="photoWoman" src="assets/wanita.jpg" alt="Mempelai wanita">
+          <h3 id="brideName">Nadia</h3>
+          <p id="brideParents" class="parents">Putri dari Bapak ... &amp; Ibu ...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark">
+      <div class="kicker">Save the date</div>
+      <h2>Menuju Hari Bahagia</h2>
+      <p>Dengan penuh rasa syukur, kami menantikan kehadiran dan doa restu Anda.</p>
+      <div class="countdown">
+        <div class="time"><strong id="days">00</strong><span>Hari</span></div>
+        <div class="time"><strong id="hours">00</strong><span>Jam</span></div>
+        <div class="time"><strong id="minutes">00</strong><span>Menit</span></div>
+        <div class="time"><strong id="seconds">00</strong><span>Detik</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">When &amp; Where</div>
+      <h2>Rangkaian Acara</h2>
+      <div class="event">
+        <div class="time-label">08.00 WIB — SELESAI</div>
+        <h3>Akad Nikah</h3>
+        <p id="akadDate">Minggu, 20 Desember 2026</p>
+      </div>
+      <div class="event">
+        <div class="time-label">11.00 WIB — SELESAI</div>
+        <h3>Resepsi</h3>
+        <p id="receptionDate">Minggu, 20 Desember 2026</p>
+      </div>
+      <div class="ornament">⌖</div>
+      <h2 id="locationName">Nama Gedung / Tempat</h2>
+      <p id="address">Alamat lengkap lokasi acara</p>
+      <a class="map-btn" id="mapLink" href="https://maps.google.com" target="_blank" rel="noopener"><button class="btn">Buka Google Maps</button></a>
+    </section>
+
+    <section>
+      <div class="kicker">Our moments</div>
+      <h2>Galeri Bahagia</h2>
+      <div class="gallery">
+        <img id="gallery1" src="assets/galeri-1.jpg" alt="Momen pasangan">
+        <img id="gallery2" src="assets/galeri-2.jpg" alt="Momen pasangan">
+        <img id="gallery3" src="assets/galeri-3.jpg" alt="Momen pasangan">
+      </div>
+    </section>
+
+    <section class="dark">
+      <div class="kicker">RSVP</div>
+      <h2>Konfirmasi Kehadiran</h2>
+      <p>Mohon beritahu kami apakah Anda dapat hadir.</p>
+      <form class="rsvp-form" id="rsvpForm">
+        <label>Nama</label><input id="rsvpName" required placeholder="Nama Anda">
+        <label>Konfirmasi</label>
+        <select id="rsvpStatus"><option value="Hadir">InsyaAllah hadir</option><option value="Tidak hadir">Mohon maaf, belum bisa hadir</option></select>
+        <label>Jumlah tamu</label><select id="rsvpCount"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+        <label>Ucapan &amp; doa</label><textarea id="rsvpMessage" rows="3" placeholder="Tuliskan doa terbaik..."></textarea>
+        <button class="btn" type="submit">Kirim RSVP via WhatsApp</button>
+      </form>
+    </section>
+
+    <section>
+      <div class="kicker">With love</div>
+      <h2>Terima Kasih</h2>
+      <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+      <div class="ornament">✧</div>
+      <div class="script" id="closingNames">Ari &amp; Nadia</div>
+    </section>
+    <footer><p>Made with love</p><div style="font:italic 22px 'Playfair Display',serif;margin:8px 0" id="footerNames">Ari &amp; Nadia</div><p>© Wedding Invitation</p></footer>
+  </main>
+</div>
+
+<button class="float-music" id="musicButton" title="Putar / jeda musik" onclick="toggleMusic()">♫</button>
+<audio id="music" src="assets/musik.mp3" loop></audio>
+<div class="toast" id="toast"></div>
+
+<section id="editor">
+  <h3>Panel Pengaturan Undangan</h3>
+  <p>Isi data dan pilih file untuk melihat preview. Untuk hasil online, upload file ke folder assets lalu publikasikan seluruh folder.</p>
+  <label>Nama mempelai pria</label><input id="editGroom" value="Ari">
+  <label>Nama mempelai wanita</label><input id="editBride" value="Nadia">
+  <label>Tanggal pernikahan</label><input id="editDate" type="date" value="2026-12-20">
+  <label>Nama orang tua mempelai pria</label><input id="editGroomParents" value="Putra dari Bapak ... & Ibu ...">
+  <label>Nama orang tua mempelai wanita</label><input id="editBrideParents" value="Putri dari Bapak ... & Ibu ...">
+  <label>Foto cover / pasangan</label><input id="uploadCover" type="file" accept="image/*">
+  <label>Foto mempelai pria</label><input id="uploadMan" type="file" accept="image/*">
+  <label>Foto mempelai wanita</label><input id="uploadWoman" type="file" accept="image/*">
+  <label>Foto galeri 1</label><input id="uploadGallery1" type="file" accept="image/*">
+  <label>Foto galeri 2</label><input id="uploadGallery2" type="file" accept="image/*">
+  <label>Foto galeri 3</label><input id="uploadGallery3" type="file" accept="image/*">
+  <label>Musik (MP3)</label><input id="uploadMusic" type="file" accept="audio/*">
+  <label>Nama tempat acara</label><input id="editLocation" value="Nama Gedung / Tempat">
+  <label>Alamat acara</label><input id="editAddress" value="Alamat lengkap lokasi acara">
+  <label>Link Google Maps</label><input id="editMap" value="https://maps.google.com">
+  <label>Nomor WhatsApp untuk RSVP (format 628xxxx)</label><input id="editWhatsapp" value="6281234567890">
+  <button class="btn" onclick="applySettings()">Terapkan ke Preview</button>
+  <div class="hint">Catatan: upload di panel ini hanya untuk preview sementara di browser Anda. Agar tamu melihat foto dan musik yang sama, letakkan file final di folder assets dengan nama foto-cover.jpg, pria.jpg, wanita.jpg, galeri-1.jpg, galeri-2.jpg, galeri-3.jpg, dan musik.mp3. Baca README.txt untuk petunjuk.</div>
+</section>
+
+<script>
+let weddingDate = new Date("2026-12-20T08:00:00");
+let waNumber = "6281234567890";
+const $ = id => document.getElementById(id);
+const params = new URLSearchParams(location.search);
+$("guestName").textContent = params.get("to") || "Tamu Undangan";
+
+function showToast(message){
+  $("toast").textContent=message;$("toast").classList.add("show");
+  setTimeout(()=>$("toast").classList.remove("show"),2600);
+}
+function openInvitation(){
+  $("cover").style.display="none";$("content").style.display="block";
+  $("musicButton").style.display="block";
+  const audio=$("music");
+  if(audio.src) audio.play().then(()=>$("musicButton").classList.add("playing")).catch(()=>showToast("Tekan tombol musik untuk memutar lagu."));
+}
+function toggleMusic(){
+  const audio=$("music");
+  if(audio.paused){audio.play().then(()=>$("musicButton").classList.add("playing")).catch(()=>showToast("Musik belum tersedia."));}
+  else{audio.pause();$("musicButton").classList.remove("playing");}
+}
+function fmtDate(value){
+  return new Date(value+"T00:00:00").toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+}
+function applySettings(){
+  const groom=$("editGroom").value.trim()||"Mempelai Pria";
+  const bride=$("editBride").value.trim()||"Mempelai Wanita";
+  const names=groom+" & "+bride;
+  $("coverGroom").textContent=groom;$("coverBride").textContent=bride;
+  ["mainNames","closingNames","footerNames"].forEach(id=>$(id).textContent=names);
+  $("groomName").textContent=groom;$("brideName").textContent=bride;
+  $("groomParents").textContent=$("editGroomParents").value;
+  $("brideParents").textContent=$("editBrideParents").value;
+  const date=$("editDate").value;
+  if(date){
+    weddingDate=new Date(date+"T08:00:00");
+    const f=fmtDate(date);
+    $("coverDate").textContent=f.toLocaleUpperCase("id-ID");
+    ["mainDate","akadDate","receptionDate"].forEach(id=>$(id).textContent=f);
+  }
+  $("locationName").textContent=$("editLocation").value;
+  $("address").textContent=$("editAddress").value;
+  $("mapLink").href=$("editMap").value||"https://maps.google.com";
+  waNumber=$("editWhatsapp").value.replace(/\D/g,"");
+  showToast("Pengaturan preview berhasil diterapkan.");
+}
+function preview(inputId,targetId,coverBg=false){
+  $(inputId).addEventListener("change",function(){
+    const file=this.files&&this.files[0];if(!file)return;
+    const url=URL.createObjectURL(file);
+    if(coverBg){$("cover").style.backgroundImage=`linear-gradient(180deg,#101b16a6,#101b168c),url("${url}")`;}
+    else $(targetId).src=url;
+  });
+}
+preview("uploadCover","photoCover");
+$("uploadCover").addEventListener("change",function(){
+  const f=this.files&&this.files[0];if(f)$("cover").style.backgroundImage=`linear-gradient(180deg,#101b16a6,#101b168c),url("${URL.createObjectURL(f)}")`;
+});
+preview("uploadMan","photoMan");preview("uploadWoman","photoWoman");
+preview("uploadGallery1","gallery1");preview("uploadGallery2","gallery2");preview("uploadGallery3","gallery3");
+$("uploadMusic").addEventListener("change",function(){
+  const f=this.files&&this.files[0];if(f){$("music").src=URL.createObjectURL(f);showToast("Musik dipilih. Buka undangan untuk memutarnya.");}
+});
+function updateCountdown(){
+  const d=weddingDate.getTime()-Date.now();
+  if(d<=0){["days","hours","minutes","seconds"].forEach(id=>$(id).textContent="00");return;}
+  $("days").textContent=Math.floor(d/86400000);
+  $("hours").textContent=Math.floor(d/3600000%24);
+  $("minutes").textContent=Math.floor(d/60000%60);
+  $("seconds").textContent=Math.floor(d/1000%60);
+}
+setInterval(updateCountdown,1000);updateCountdown();
+$("rsvpForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const message=`Assalamu'alaikum, saya ${$("rsvpName").value}. Konfirmasi: ${$("rsvpStatus").value}. Jumlah tamu: ${$("rsvpCount").value}. Ucapan: ${$("rsvpMessage").value}`;
+  if(!waNumber){showToast("Isi nomor WhatsApp di panel pengaturan.");return;}
+  window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`,"_blank","noopener");
+});
+</script>
+</body>
+</html>
